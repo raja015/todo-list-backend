@@ -24,7 +24,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // var AuthController = require('./auth/AuthController.js');
 // app.use('/api/auth', AuthController);
 // module.exports = app;
-app.options('https://todo-list-015.herokuapp.com', cors());
+app.options("/",(req,res)=>{
+console.log("option");
+res.header("Access-Control-Allow-Origin", "https://todo-list-015.herokuapp.com");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+});
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
