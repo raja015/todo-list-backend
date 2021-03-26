@@ -6,12 +6,13 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "https://todo-list-015.herokuapp.com/api/auth/login"
+  origin: "https://todo-list-015.herokuapp.com",
+
 };
 
 app.use(cors(corsOptions));
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://todo-list-015.herokuapp.com/api/auth/login");
+  res.header("Access-Control-Allow-Origin", "https://todo-list-015.herokuapp.com/");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -24,20 +25,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // var AuthController = require('./auth/AuthController.js');
 // app.use('/api/auth', AuthController);
 // module.exports = app;
-app.options("/",(req,res)=>{
+app.options("*",(req,res)=>{
 console.log("option");
+
 res.header("Access-Control-Allow-Origin", "https://todo-list-015.herokuapp.com/");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 });
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to bezkoder application." }),
+  console.log("/");
 });
 require("./routes/auth.routes")(app)
 require("./routes/todo.routes")(app);
 require("./routes/tag.routes")(app);
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 //routing
 
 app.listen(PORT, () => {
