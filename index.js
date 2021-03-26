@@ -12,7 +12,7 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://todo-list-015.herokuapp.com/");
+  res.header("Access-Control-Allow-Origin", "https://todo-list-015.herokuapp.com");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -27,8 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // module.exports = app;
 app.options("*",(req,res)=>{
 console.log("option");
-
-res.header("Access-Control-Allow-Origin", "https://todo-list-015.herokuapp.com/");
+res.header("Access-Control-Allow-Origin", "https://todo-list-015.herokuapp.com");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 });
 // simple route
